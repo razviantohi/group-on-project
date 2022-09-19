@@ -1,0 +1,36 @@
+
+<div class="container">
+	<div class="media">
+	<h3 class="align-self-start mr-3"><strong>{{ post.message_html|safe }}<strong></h3>
+	<div class="media-body">
+		
+		<h5 class="media mt-3">
+			<span class="username">by<a href="{% url 'posts:for_user' username=post.user.username %}"> @{{ post.user.username }}</a></span>
+			<p><time class="time"><a href="{% url 'posts:single' username=post.user.username pk=post.pk %}">{{ post.created_at }}</a></time></p>
+			{% if post.group %}
+			<span class="group-name">in <a href="{% url 'groups:single' slug=post.group.slug  %}">{{ post.group.name }}</a></span>
+			{% endif %}
+		</h5>
+
+
+
+
+		<div class="media-footer">
+			{% if user.is_authenticated and post.user == user and not hide_delete %}
+				<a href="{% url 'posts:delete' pk=post.pk %}" title="delete" class="btn btn-simple"> 
+					<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Delete"></span>
+					<button class="btn btn-danger" style="pointer-events: none;" type="button">Delete</button>
+				</a>
+				
+			{% endif %}
+			
+			<a href="{% url 'posts:all_comments' pk=post.pk %}" title="view comments" class="btn btn-simple">View Comments</a>
+			{% if user.is_authenticated %}
+			<a href="{% url 'posts:create_comment' pk=post.pk %}" title="create comments" class="btn btn-simple">Create Comment</a>
+			{% else %}
+			<a href="{% url 'accounts:login' %}" title="create comments" class="btn btn-simple">Create Comment</a>
+			{% endif %}
+		</div>
+	</div>
+</div>
+</div>

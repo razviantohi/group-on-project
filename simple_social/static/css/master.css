@@ -1,0 +1,51 @@
+.navbar-left {
+    display: flex;
+    justify-self: flex-start;
+}
+
+/* .navbar-right {
+    display: flex;
+    justify-self: flex-start;
+    
+} */
+
+.nav-link {
+    margin: 0px 5px 0px 5px;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: green;
+
+}
+
+.mycontent{
+    padding-top: 100px;
+   border: 10px solid red;
+  }
+  
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+  }
+  
+  
+  #note {
+    position: absolute;
+    color: rgba(249,241,204,1);
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    margin: auto;
+    text-align: center;
+    user-select: none;
+    font-family: Arial;
+  }
+
+
+

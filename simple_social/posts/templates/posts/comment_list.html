@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-md-4">
+    {% for comment in object_list %}
+    {% if comment.post.pk == post_id %}
+    <div class="container">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{comment.text}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">by {{comment.user.username}}</h6>
+              
+              <a href="#" class="card-link">posted at {{ comment.created_date }}</a>
+              <a href="#" class="card-link">in {{comment.post}}</a>
+            </div>
+          </div>
+    
+        {% if user.is_authenticated and comment.user == user and not hide_delete %}
+        <a href="{% url 'posts:delete_comment' pk=comment.pk %}" class="btn btn-danger">Delete Comment</a></li>
+        {% endif %}
+    {% endif %}
+    
+</div>
+    {% endfor %}
+</div>
+{% endblock %}
+

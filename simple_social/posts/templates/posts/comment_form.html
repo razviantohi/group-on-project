@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h4>Create New Comment</h4>
+<form method="POST" action="{% url 'posts:create_comment' pk=post_id %}" id="postForm">
+	{% csrf_token %}
+	{{ form|crispy }}
+	<input type="submit" value="Post" class="btn btn-primary btn-large">
+</form>
+{% endblock %}
